@@ -1,0 +1,43 @@
+{
+    "liveServer.settings.CustomBrowser": "chrome",
+    "open-in-browser.default": "chrome",
+    "liveServer.settings.donotShowInfoMsg": true,
+    
+    "liveSassCompile.settings.formats": [
+        {
+            "format": "expanded",
+            "extensionName": ".css",
+            "savePath": "~/../css"
+        }
+      ],
+      "liveSassCompile.settings.generateMap": false,      
+      "security.workspace.trust.untrustedFiles": "open",
+      "java.inlayHints.parameterNames.enabled": "none",
+      "java.configuration.runtimes": [
+
+        { // 자바 JDK 8
+          "name": "JavaSE-1.8",
+          "path": "C:\\Program Files\\java\\java-se-8u42-ri",
+          "default": false
+        },
+        { // 자바 JDK 11
+          "name": "JavaSE-11",
+          "path": "C:\\Program Files\\java\\jdk-11",
+          "default": true
+        },
+        { // 자바 JDK 17
+          "name": "JavaSE-17",
+          "path": "C:\\Program Files\\java\\jdk-17",
+          "default": false
+        }
+      ],
+      "workbench.colorTheme": "Visual Studio Dark",
+      "editor.minimap.enabled": false,
+      "javascript.updateImportsOnFileMove.enabled": "always",
+      "boot-java.rewrite.reconcile": true,
+      "terminal.integrated.defaultProfile.windows": "Git Bash",
+      "window.zoomLevel": 1,
+      "editor.mouseWheelZoom": true,
+      // "java.debug.settings.console": "internalConsole",
+      // "files.autoGuessEncoding": true      
+}
