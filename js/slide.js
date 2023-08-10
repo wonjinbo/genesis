@@ -182,18 +182,18 @@
            // 테블릿과 모바일에서만 이벤트 동작
            // originalEvent
            //    slideContainer.on({
-        //     touchstart(event){
-        //         console.log(event);
-        //         console.log(event.originalEvent.changedTouches[0].clinetX);
-        //     },
-        //     touchend(event){
-        //         //console.log(e);
-        //         console.log(event.originalEvent.changedTouches[0].clinetX);
-        //     },
-        //     touchmove(e){
-        //        // console.log(e);
-        //        console.log(e.originalEvent.changedTouches[0].clinetX);
-        //     }
+            //     touchstart(event){
+            //         console.log(event);
+            //         console.log(event.originalEvent.changedTouches[0].clinetX);
+            //     },
+            //     touchend(event){
+            //         //console.log(e);
+            //         console.log(event.originalEvent.changedTouches[0].clinetX);
+            //     },
+            //     touchmove(e){
+            //        // console.log(e);
+            //        console.log(e.originalEvent.changedTouches[0].clinetX);
+            //     }
            //    });
 
 
@@ -279,6 +279,7 @@
             const subMenu = $('#section2 .sub-menu');
             const materialIcons = $('#section2  .select-btn .material-icons');
             const heightRate = 0.884545392; // 너비에대한 높이 비율
+            let n = slide.length; // 10개
             // 터치스와이프
             let touchStart = null;
             let touchEnd = null;
@@ -291,7 +292,7 @@
             let sizeX = 300;  
             let offsetL =   slideWrap.offset().left; 
             let slideWidth; 
-           
+            
             resizeFn(); //로딩시
             // 함수는 명령어의 묶음
             function resizeFn(){
@@ -300,13 +301,27 @@
                 if(winW <= 1642){
                     // 1280 초과 에서는 슬라이드 3개 
                     // 1280 이하 에서는 슬라이드 1개 
-                    if(winW > 1280){
+                    if(winW > 1280){ // 10/1-2
                         slideWidth = (section2Container.innerWidth()-0+20+20)/3;
+                        n = slide.length-2; // 10-2 = 8
+                         // 페이지 버튼 제어(개수) 8개인 경우 / 10개인 경우
+                         pageBtn.css({display: 'none'}); // 10개 모두 숨김
+                        for(let i=0; i<n; i++){
+                            pageBtn.eq(i).css({display: 'block'}); // 8개만 보임
+                        
+                        }
+                        
+                        if(cnt>=7){
+                            cnt = 7;
+                        }
+                        
                     }
                     else{
                         slideWidth = (section2Container.innerWidth()-0+20+20)/1;
+                        n = slide.length; // 10
+                        pageBtn.css({display: 'block'}); // 10개 모두 보임
+                        cnt=0;
                     }
-                    
                 }
                 else{ // 이하 winW <= 1642
                     slideWidth = (section2Container.innerWidth()-198+20+20)/3;
@@ -316,6 +331,8 @@
                 slide.css({width: slideWidth, height: slideWidth*heightRate });
                 slideH3.css({fontSize: slideWidth*0.07 });
                 slideH4.css({fontSize: slideWidth*0.03 });
+               
+               
                 mainSlide(); // 슬라이드에 슬라이드 너비 전달하기위해서 호출
             }
 
@@ -447,7 +464,7 @@
             // 다음카운트함수
             function nextCount(){
                 cnt++;
-                if(cnt>7) {cnt=7};
+                if(cnt>n-1) {cnt=n-1};
                 mainSlide();
             }
 
@@ -465,7 +482,7 @@
                 $(this).on({
                     click(e){
                         e.preventDefault();
-                        console.log(idx);
+                        
                         cnt=idx;
                         mainSlide();
                     }

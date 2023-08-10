@@ -37,7 +37,7 @@ git config --list
 //5 스테이징 
 git add .
 //6 커밋
-git commit -m '제네시스 메인슬라이드'
+git commit -m '모바일 터치이벤트 추가'
 // 7.푸시
 git push origin master
 // 8 . 인증이 되어야 푸쉬가 완료된다.
